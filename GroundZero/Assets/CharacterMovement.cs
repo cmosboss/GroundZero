@@ -3,7 +3,7 @@ using System.Collections;
 
 public class CharacterMovement : MonoBehaviour {
     Animator animator;
-    public float speed = 1.0F;
+    public float speed = 1.0f;
     public float rotationSpeed = 100.0F;
     // Use this for initialization
     void Start () {
@@ -12,9 +12,10 @@ public class CharacterMovement : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        animator.SetFloat("Speed", 1);
         float translation = Input.GetAxis("Vertical") * speed;
+        animator.SetFloat("Speed", translation);
         float rotation = Input.GetAxis("Horizontal") * rotationSpeed;
+        animator.SetFloat("Turning", rotation);
         translation *= Time.deltaTime;
         rotation *= Time.deltaTime;
         transform.Translate(0, 0, translation);
