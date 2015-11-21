@@ -14,10 +14,11 @@ public class CharacterMovement : MonoBehaviour {
     }
     // Update is called once per frame
     void Update () {
-        if (Input.GetMouseButtonDown(0)) {
-            animator.SetBool("Heavy Attack", true);
-        }
-        else {
+       if (animator.GetBool("Heavy Attack") == false) {
+            if (Input.GetMouseButtonDown(0)) {
+                animator.SetBool("Heavy Attack", true);
+            }
+        } else {
             animator.SetBool("Heavy Attack", false);
         }
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack Heavy")){
