@@ -14,6 +14,8 @@ public class EnemyStats : MonoBehaviour {
 	void Update () {
         if (live == false) {
             Destroy(gameObject);
+            GameObject gameController = GameObject.FindWithTag("GameController");
+            gameController.GetComponent<WaveSystem>().CheckStage();
         }
 	}
     public void Hit(float damage) {
@@ -24,6 +26,11 @@ public class EnemyStats : MonoBehaviour {
                 GameObject prefab = (GameObject)Resources.Load("EnemyRagdoll");
                 GameObject instance = Instantiate(prefab, transform.position, Quaternion.identity) as GameObject;
                 instance.transform.Find("Hips").GetComponent<GetTurnt>().getHit(hitlocation);
+            } else {
+                Vector3 head = transform.position;
+                head.y = 1;
+                GameObject prefab = (GameObject)Resources.Load("BloodSpray");
+                Instantiate(prefab, head, Random.rotation);
             }
         }
     }
