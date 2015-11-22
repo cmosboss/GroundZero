@@ -12,12 +12,18 @@ public class Skills : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        if (Input.GetKeyDown(KeyCode.Alpha1)) {
-            print("Spell!");
-            animator.SetBool("Casting", true);
+        if (animator.GetCurrentAnimatorStateInfo(0).IsName("Casting")) {
         } else {
-            animator.SetBool("Casting", false);
-        
+            if (Input.GetMouseButtonDown(1)) {
+                animator.SetBool("Casting", true);
+                GameObject prefab = (GameObject)Resources.Load("Fireball");
+                Transform SpellSpawn = GameObject.FindWithTag("SpellSpawn").transform;
+                Instantiate(prefab, SpellSpawn.position, transform.rotation);
+            } else {
+                animator.SetBool("Casting", false);
+
+            }
         }
+
     }
 }

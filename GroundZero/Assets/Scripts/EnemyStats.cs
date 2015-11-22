@@ -24,7 +24,7 @@ public class EnemyStats : MonoBehaviour {
             if (health <= 0) {
                 live = false;
                 GameObject prefab = (GameObject)Resources.Load("EnemyRagdoll");
-                GameObject instance = Instantiate(prefab, transform.position, Quaternion.identity) as GameObject;
+                GameObject instance = Instantiate(prefab, transform.position, transform.rotation) as GameObject;
                 instance.transform.Find("Hips").GetComponent<GetTurnt>().getHit(hitlocation);
             } else {
                 Vector3 head = transform.position;

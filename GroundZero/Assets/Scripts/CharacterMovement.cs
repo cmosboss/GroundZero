@@ -21,11 +21,14 @@ public class CharacterMovement : MonoBehaviour {
         } else {
             animator.SetBool("Heavy Attack", false);
         }
+       //reduce speed and enable "attacking" in the script for damage
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Attack Heavy")){
+            GameObject.FindWithTag("Weapon").GetComponent<Attack>().attacking = true;
             movementSpeed = speed * 0.6f;
         }
         else{
             movementSpeed = speed;
+            GameObject.FindWithTag("Weapon").GetComponent<Attack>().attacking = false;
         }
         //move
         float translation = Input.GetAxis("Vertical") * movementSpeed;

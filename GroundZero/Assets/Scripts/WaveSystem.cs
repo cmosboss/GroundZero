@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WaveSystem : MonoBehaviour {
     private int waves = 20;
-    private int maxUnits = 20;
+    private int maxUnits = 10;
     private int units = 0;
     private bool clear = true;
     private int currentWave;
@@ -42,7 +42,7 @@ public class WaveSystem : MonoBehaviour {
                 Vector3 center = SpawnLocations[region][0];
                 Vector3 extents = SpawnLocations[region][1];
                 GameObject prefab = (GameObject)Resources.Load("EnemyBasic");
-                GameObject instance = Instantiate(prefab, new Vector3(Random.Range(center.x - extents.x, center.x + extents.x),0,Random.Range(center.z - extents.z, center.z + extents.z)), Quaternion.identity) as GameObject;
+                Instantiate(prefab, new Vector3(Random.Range(center.x - extents.x, center.x + extents.x),0,Random.Range(center.z - extents.z, center.z + extents.z)), Quaternion.identity);
                 units++;
             } else {
                 clear = false;
@@ -61,7 +61,9 @@ public class WaveSystem : MonoBehaviour {
     }
     public void CheckStage() {
         int Living = GameObject.FindGameObjectsWithTag("Enemy").Length;
+        print(Living);
         if (Living <= 1) {
+            print("new");
             ClearStage();
         }
     }

@@ -8,6 +8,7 @@ TagManager:
   - Weapon
   - FxTemporaire
   - SpawnRegion
+  - SpellSpawn
   layers:
   - Default
   - TransparentFX
