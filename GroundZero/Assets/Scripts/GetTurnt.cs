@@ -13,8 +13,14 @@ public class GetTurnt : MonoBehaviour {
 
     }
     public void getHit(Vector3 hitlocation) {
+        print("blasting");
         rb = GetComponent<Rigidbody>();
-        rb.AddRelativeForce(new Vector3(0,0,-1) * 3000);
+        //use this for objects whos HIPS are oriented with Z axis going through them (dick to butt)
+        //rb.AddRelativeForce(new Vector3(0,0,-1) * 3000);
+        //use this for objects whos HIPs are oriented with Y axis going through them (dick to butt)
+        rb.AddRelativeForce(new Vector3(0,-1,0) * 3000);
+
+
     }
 
 }

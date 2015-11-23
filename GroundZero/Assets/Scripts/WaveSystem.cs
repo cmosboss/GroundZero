@@ -41,7 +41,7 @@ public class WaveSystem : MonoBehaviour {
                 int region = Random.Range(0, SpawnLocations.Length);
                 Vector3 center = SpawnLocations[region][0];
                 Vector3 extents = SpawnLocations[region][1];
-                GameObject prefab = (GameObject)Resources.Load("EnemyBasic");
+                GameObject prefab = (GameObject)Resources.Load("EnemyBlob");
                 Instantiate(prefab, new Vector3(Random.Range(center.x - extents.x, center.x + extents.x),0,Random.Range(center.z - extents.z, center.z + extents.z)), Quaternion.identity);
                 units++;
             } else {
@@ -61,9 +61,7 @@ public class WaveSystem : MonoBehaviour {
     }
     public void CheckStage() {
         int Living = GameObject.FindGameObjectsWithTag("Enemy").Length;
-        print(Living);
         if (Living <= 1) {
-            print("new");
             ClearStage();
         }
     }
