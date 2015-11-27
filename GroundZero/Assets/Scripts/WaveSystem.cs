@@ -3,7 +3,7 @@ using System.Collections;
 
 public class WaveSystem : MonoBehaviour {
     private int waves = 20;
-    private int maxUnits = 10;
+    private int maxUnits = 50;
     private int units = 0;
     private bool clear = true;
     private int currentWave;
