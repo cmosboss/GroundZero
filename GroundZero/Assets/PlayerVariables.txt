@@ -1,0 +1,9 @@
+This is a list of player variables. Save via PlayerPrefs in unity,
+this is how we persist data across multiple scenes and playthroughs. 
+
+Total Kills (Int)
+Total Gold (Int)
+Total Time (String)(TimeStamp H:i:s)
+Total Hits (Int)
+Total Attacks (Int)
+Total Casts (Int)

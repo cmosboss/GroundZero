@@ -5,19 +5,30 @@ public class EnemyStats : MonoBehaviour {
     public float health = 100;
     public Vector3 hitlocation;
     private bool live = true;
-	// Use this for initialization
-	void Start () {
-	
-	}
+    public float damage = 10;
+    // Use this for initialization
+    private Stats statScript;
+    void Start() {
+        statScript = GameObject.FindWithTag("GameController").gameObject.GetComponent<Stats>();
+
+    }
 	
 	// Update is called once per frame
 	void Update () {
         if (live == false) {
+            statScript.onKill();
             Destroy(gameObject);
             GameObject gameController = GameObject.FindWithTag("GameController");
             gameController.GetComponent<WaveSystem>().CheckStage();
         }
 	}
+    void OnCollisionEnter(Collision collision) {
+        //get the direction of impact, then get the position of the target, then make the decal spawn at the location of target + 2x offset. (so it looks like blood is coming out the back of them based on where you hit them)
+        if (collision.gameObject.tag == "Player") {
+                collision.gameObject.GetComponent<PlayStatistics>().Hit(damage);
+        }
+
+    }
     public void Hit(float damage) {
         health -= damage;
         if (live == true){

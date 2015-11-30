@@ -5,9 +5,10 @@ public class Skills : MonoBehaviour {
     Animator animator;
 
     // Use this for initialization
-    void Start () {
+    private Stats statScript;
+    void Start() {
+        statScript = GameObject.FindWithTag("GameController").gameObject.GetComponent<Stats>();
         animator = GetComponent<Animator>();
-
     }
 
     // Update is called once per frame
@@ -15,6 +16,7 @@ public class Skills : MonoBehaviour {
         if (animator.GetCurrentAnimatorStateInfo(0).IsName("Casting")) {
         } else {
             if (Input.GetMouseButtonDown(1)) {
+                statScript.onCast();
                 animator.SetBool("Casting", true);
                 GameObject prefab = (GameObject)Resources.Load("Fireball");
                 Transform SpellSpawn = GameObject.FindWithTag("SpellSpawn").transform;

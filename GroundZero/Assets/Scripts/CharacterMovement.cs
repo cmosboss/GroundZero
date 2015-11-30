@@ -6,9 +6,11 @@ public class CharacterMovement : MonoBehaviour {
     public float speed = 1.0f;
     private float movementSpeed = 0.0f;
     public float rotationSpeed = 100.0F;
-    
+
     // Use this for initialization
-    void Start () {
+    private Stats statScript;
+    void Start() {
+        statScript = GameObject.FindWithTag("GameController").gameObject.GetComponent<Stats>();
         movementSpeed = speed;
         animator = GetComponent<Animator>();
     }
@@ -16,6 +18,7 @@ public class CharacterMovement : MonoBehaviour {
     void Update () {
        if (animator.GetBool("Heavy Attack") == false) {
             if (Input.GetMouseButtonDown(0)) {
+                statScript.onAttack();
                 animator.SetBool("Heavy Attack", true);
             }
         } else {
