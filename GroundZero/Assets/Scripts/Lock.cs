@@ -15,7 +15,8 @@ public class Lock : MonoBehaviour {
     void LateUpdate() {
        // transform.rotation = Quaternion.Euler(new Vector3(75, 180, 0));
         Vector3 offsetVector = target.position;
-        offsetVector.y += 12;
+        offsetVector.y += 10;
+        //offsetVector.x = 0;
         offsetVector.z += 1.5f;
         transform.position = offsetVector;
     }
